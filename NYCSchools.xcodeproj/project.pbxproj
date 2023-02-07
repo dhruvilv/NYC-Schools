@@ -10,11 +10,11 @@
 		D6B5363A2992FE5800A80044 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B536392992FE5800A80044 /* AppDelegate.swift */; };
 		D6B5363C2992FE5800A80044 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5363B2992FE5800A80044 /* SceneDelegate.swift */; };
 		D6B5363E2992FE5800A80044 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5363D2992FE5800A80044 /* ViewController.swift */; };
-		D6B536412992FE5800A80044 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6B5363F2992FE5800A80044 /* Main.storyboard */; };
 		D6B536432992FE6200A80044 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6B536422992FE6200A80044 /* Assets.xcassets */; };
 		D6B536462992FE6200A80044 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6B536442992FE6200A80044 /* LaunchScreen.storyboard */; };
 		D6B536512992FE6300A80044 /* NYCSchoolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B536502992FE6300A80044 /* NYCSchoolsTests.swift */; };
 		D6B5365C2992FE6300A80044 /* NYCSchoolsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5365B2992FE6300A80044 /* NYCSchoolsUITests.swift */; };
+		D6B536792992FF5700A80044 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B536782992FF5700A80044 /* APIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,6 @@
 		D6B536392992FE5800A80044 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6B5363B2992FE5800A80044 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D6B5363D2992FE5800A80044 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D6B536402992FE5800A80044 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D6B536422992FE6200A80044 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6B536452992FE6200A80044 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6B536472992FE6200A80044 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		D6B536572992FE6300A80044 /* NYCSchoolsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NYCSchoolsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B5365B2992FE6300A80044 /* NYCSchoolsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYCSchoolsUITests.swift; sourceTree = "<group>"; };
 		D6B5365D2992FE6300A80044 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6B536782992FF5700A80044 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +101,10 @@
 			children = (
 				D6B536392992FE5800A80044 /* AppDelegate.swift */,
 				D6B5363B2992FE5800A80044 /* SceneDelegate.swift */,
-				D6B5363D2992FE5800A80044 /* ViewController.swift */,
-				D6B5363F2992FE5800A80044 /* Main.storyboard */,
+				D6B536772992FF3600A80044 /* API */,
+				D6B5367D2992FFDF00A80044 /* Models */,
+				D6B536762992FF3000A80044 /* Views */,
+				D6B536752992FF2800A80044 /* ViewControllers */,
 				D6B536422992FE6200A80044 /* Assets.xcassets */,
 				D6B536442992FE6200A80044 /* LaunchScreen.storyboard */,
 				D6B536472992FE6200A80044 /* Info.plist */,
@@ -126,6 +128,36 @@
 				D6B5365D2992FE6300A80044 /* Info.plist */,
 			);
 			path = NYCSchoolsUITests;
+			sourceTree = "<group>";
+		};
+		D6B536752992FF2800A80044 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D6B5363D2992FE5800A80044 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D6B536762992FF3000A80044 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D6B536772992FF3600A80044 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				D6B536782992FF5700A80044 /* APIService.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		D6B5367D2992FFDF00A80044 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +265,6 @@
 			files = (
 				D6B536462992FE6200A80044 /* LaunchScreen.storyboard in Resources */,
 				D6B536432992FE6200A80044 /* Assets.xcassets in Resources */,
-				D6B536412992FE5800A80044 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +291,7 @@
 			files = (
 				D6B5363E2992FE5800A80044 /* ViewController.swift in Sources */,
 				D6B5363A2992FE5800A80044 /* AppDelegate.swift in Sources */,
+				D6B536792992FF5700A80044 /* APIService.swift in Sources */,
 				D6B5363C2992FE5800A80044 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,14 +328,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D6B5363F2992FE5800A80044 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D6B536402992FE5800A80044 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D6B536442992FE6200A80044 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
