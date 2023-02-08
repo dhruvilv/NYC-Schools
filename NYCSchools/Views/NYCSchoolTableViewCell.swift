@@ -15,17 +15,26 @@ class NYCSchoolTableViewCell: UITableViewCell {
       schoolNameLabel.text = viewModel?.schoolName
     }
   }
+  
+  let containerView: UIView = {
+    let view = UIView()
+    view.backgroundColor = .systemGray5
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }()
 
   let schoolNameLabel: UILabel = {
     let label = UILabel()
-    label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+    label.numberOfLines = 0
+    label.lineBreakMode = .byWordWrapping
+    label.font = UIFont.preferredFont(forTextStyle: .headline)
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
  }()
 
  let databaseNumberLabel: UILabel = {
     let label = UILabel()
-    label.font = UIFont.systemFont(ofSize: 16)
+    label.font = UIFont.preferredFont(forTextStyle: .callout)
     label.textAlignment = .right
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
@@ -39,25 +48,30 @@ class NYCSchoolTableViewCell: UITableViewCell {
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-    contentView.addSubview(schoolNameLabel)
-    contentView.addSubview(databaseNumberLabel)
+    contentView.addSubview(containerView)
+    containerView.addSubview(schoolNameLabel)
+    containerView.addSubview(databaseNumberLabel)
 
-    NSLayoutConstraint.activate([
-       schoolNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-       schoolNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-       databaseNumberLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-       databaseNumberLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-       schoolNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: databaseNumberLabel.leadingAnchor, constant: -16)
-    ])
-    contentView.layer.cornerRadius = 8
-    contentView.layer.borderWidth = 1
-    contentView.layer.borderColor = UIColor.lightGray.cgColor
-
-    contentView.layer.shadowColor = UIColor.black.cgColor
-    contentView.layer.shadowOpacity = 0.1
-    contentView.layer.shadowOffset = CGSize(width: 0, height: 1)
-    contentView.layer.shadowRadius = 4
+    setupConstraints()
   }
   
+  func setupConstraints() {
+    NSLayoutConstraint.activate([
+      // Setup Container View
+      containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
+      containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4),
+      containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
+      containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
+      
+      // Setup schoolNameLabel
+      schoolNameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 4),
+      schoolNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 4),
+      
+      // Setup DatabaseNumberLabel
+      databaseNumberLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -4),
+      databaseNumberLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 4),
+    ])
+    containerView.layer.cornerRadius = 8
+  }
   
 }

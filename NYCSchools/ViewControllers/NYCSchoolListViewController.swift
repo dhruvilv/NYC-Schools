@@ -43,6 +43,11 @@ class NYCSchoolListViewController: UITableViewController {
       NYCSchoolTableViewCell.self,
       forCellReuseIdentifier: NYCSchoolTableViewCell.reuseIdentifier
     )
+    tableView.separatorStyle = .none
+  }
+  
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 88
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
