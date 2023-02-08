@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct SchoolListViewModel {
+struct NYCSchoolListViewModel {
   let apiService: NYCSchoolAPIService
   
   init(apiService: NYCSchoolAPIService) {
@@ -18,7 +18,13 @@ struct SchoolListViewModel {
   
   func fetchData() {
     apiService.fetchSchools { result in
-      
+      switch result {
+      case .success(let schoolList):
+        for i in 0..<5 {
+          print(schoolList[i])
+        }
+      default: break
+      }
     }
   }
 }
