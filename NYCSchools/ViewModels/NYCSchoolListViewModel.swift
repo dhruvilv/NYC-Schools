@@ -15,6 +15,9 @@ enum Status {
 
 
 class NYCSchoolListViewModel {
+  
+  // MARK: - Properties
+  
   let apiService: NYCSchoolAPIService
   
   var schools: [NYCSchoolViewModel]?
@@ -25,14 +28,26 @@ class NYCSchoolListViewModel {
     }
   }
   
+  var showSchoolDetailInfo: ((NYCSchoolViewModel) -> Void)?
   var statusDidChange: ((Status) -> Void)?
+  
+  
+  // MARK: - Initializer
   
   init(apiService: NYCSchoolAPIService) {
     self.apiService = apiService
-    fetchData()
+    fetchSchools()
   }
   
-  func fetchData() {
+  // MARK: - Methods
+  
+  func didTapSchool(at index: Int) {
+    guard let schools = schools, index < schools.count else { return }
+    let schoolViewModel = schools[index]
+    showSchoolDetailInfo?(schoolViewModel)
+  }
+  
+  func fetchSchools() {
     apiService.fetchSchools { [weak self] result in
       guard let self = self else { return }
       switch result {

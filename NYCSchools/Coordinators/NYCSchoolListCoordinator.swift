@@ -19,6 +19,10 @@ class NYCSchoolListCoordinator: Coordinator {
   ) {
     self.viewModel = viewModel
     self.navigationController = navigationController
+    viewModel.showSchoolDetailInfo = { school in
+      let vc = NYCSchoolDetailViewController(schoolName: school.schoolName)
+      self.navigationController.pushViewController(vc, animated: true)
+    }
   }
   
   func start() {

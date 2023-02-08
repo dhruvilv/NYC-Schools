@@ -19,6 +19,7 @@ class NYCSchoolTableViewCell: UITableViewCell {
   let containerView: UIView = {
     let view = UIView()
     view.backgroundColor = .systemGray5
+    view.layer.cornerRadius = 8
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()
@@ -37,6 +38,8 @@ class NYCSchoolTableViewCell: UITableViewCell {
     label.font = UIFont.preferredFont(forTextStyle: .callout)
     label.textAlignment = .right
     label.translatesAutoresizingMaskIntoConstraints = false
+    label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+    label.setContentCompressionResistancePriority(.required, for: .horizontal)
     return label
  }()
   
@@ -47,6 +50,10 @@ class NYCSchoolTableViewCell: UITableViewCell {
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
+    selectionStyle = .none
+    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(containerViewTapped))
+    tapGestureRecognizer.cancelsTouchesInView = false
+    containerView.addGestureRecognizer(tapGestureRecognizer)
 
     contentView.addSubview(containerView)
     containerView.addSubview(schoolNameLabel)
@@ -66,12 +73,29 @@ class NYCSchoolTableViewCell: UITableViewCell {
       // Setup schoolNameLabel
       schoolNameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 4),
       schoolNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 4),
+      schoolNameLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -4),
+      schoolNameLabel.trailingAnchor.constraint(equalTo: databaseNumberLabel.leadingAnchor, constant: -16),
       
       // Setup DatabaseNumberLabel
       databaseNumberLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -4),
       databaseNumberLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 4),
     ])
-    containerView.layer.cornerRadius = 8
+  }
+    
+  @objc func containerViewTapped() {
+    UIView.animate(withDuration: 0.1, animations: {
+      self.containerView.backgroundColor = .systemGray3
+    }) { (_) in
+      UIView.animate(withDuration: 0.1) {
+        self.containerView.backgroundColor = .systemGray5
+      }
+    }
   }
   
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    viewModel = nil
+    schoolNameLabel.text = nil
+    databaseNumberLabel.text = nil
+  }
 }

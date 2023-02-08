@@ -24,8 +24,9 @@ class NYCSchoolListViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
-    view.backgroundColor = .systemGray
+    
+    // We can localize strings like this to support multiple languages.
+    title = "NYC School List"
     listViewModel.statusDidChange = { [weak self] status in
       switch status {
       case .loaded:
@@ -42,12 +43,18 @@ class NYCSchoolListViewController: UITableViewController {
     tableView.register(
       NYCSchoolTableViewCell.self,
       forCellReuseIdentifier: NYCSchoolTableViewCell.reuseIdentifier
-    )
+    )    
     tableView.separatorStyle = .none
+    tableView.rowHeight = UITableView.automaticDimension
+    tableView.estimatedRowHeight = 80.0
+  }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    listViewModel.didTapSchool(at: indexPath.row)
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 88
+    return 80.0
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
