@@ -7,10 +7,10 @@
 
 import Foundation
 
-/// School list - /s3k6-pzi2.json
-/// School details - /f9bf-2cp4.json
-
 struct NYCSchoolAPIService {
+  
+  private static let SchoolListJSON = "s3k6-pzi2.json"
+  private static let SchoolDetailJSON = "f9bf-2cp4.json"
 
   let session: URLSession
   private let baseURL = "https://data.cityofnewyork.us/resource"
@@ -20,7 +20,7 @@ struct NYCSchoolAPIService {
   }
   
   func fetchSchools(_ completion: @escaping (Result<[NYCSchool], APIError>) -> Void) {
-    let urlString = "\(baseURL)/s3k6-pzi2.json"
+    let urlString = "\(baseURL)/\(NYCSchoolAPIService.SchoolListJSON)"
     guard let url = URL(string: urlString) else { return }
     let urlRequest = URLRequest(url: url)
     performFetch(urlRequest) { result in
@@ -82,6 +82,16 @@ extension NYCSchoolAPIService: APIService {
       DispatchQueue.main.async {
         completion(.failure(error))
       }
+    }
+  }
+
+  struct NYCSchool: Decodable {
+    let databaseNumber: String
+    let schoolName: String
+    
+    private enum CodingKeys: String, CodingKey {
+      case databaseNumber = "dbn"
+      case schoolName = "school_name"
     }
   }
 }
