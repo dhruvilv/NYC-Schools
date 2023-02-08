@@ -10,6 +10,8 @@
 		D64548F729930F1F001A229B /* NYCSchoolListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64548F629930F1F001A229B /* NYCSchoolListViewModel.swift */; };
 		D64548FF29931FDE001A229B /* NYCSchoolAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64548FE29931FDE001A229B /* NYCSchoolAPIService.swift */; };
 		D645490529932025001A229B /* NYCSchool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D645490429932025001A229B /* NYCSchool.swift */; };
+		D645491429932220001A229B /* NYCSchoolListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D645491329932220001A229B /* NYCSchoolListCoordinator.swift */; };
+		D64549192993253A001A229B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64549182993253A001A229B /* Coordinator.swift */; };
 		D6B5363A2992FE5800A80044 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B536392992FE5800A80044 /* AppDelegate.swift */; };
 		D6B5363C2992FE5800A80044 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5363B2992FE5800A80044 /* SceneDelegate.swift */; };
 		D6B5363E2992FE5800A80044 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5363D2992FE5800A80044 /* ViewController.swift */; };
@@ -41,6 +43,8 @@
 		D64548F629930F1F001A229B /* NYCSchoolListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYCSchoolListViewModel.swift; sourceTree = "<group>"; };
 		D64548FE29931FDE001A229B /* NYCSchoolAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYCSchoolAPIService.swift; sourceTree = "<group>"; };
 		D645490429932025001A229B /* NYCSchool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYCSchool.swift; sourceTree = "<group>"; };
+		D645491329932220001A229B /* NYCSchoolListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYCSchoolListCoordinator.swift; sourceTree = "<group>"; };
+		D64549182993253A001A229B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		D6B536362992FE5800A80044 /* NYCSchools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYCSchools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B536392992FE5800A80044 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6B5363B2992FE5800A80044 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,12 +86,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D645490329932014001A229B /* APIModels */ = {
+		D645490329932014001A229B /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				D645490429932025001A229B /* NYCSchool.swift */,
 			);
-			path = APIModels;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D645491229932205001A229B /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				D645491329932220001A229B /* NYCSchoolListCoordinator.swift */,
+				D64549182993253A001A229B /* Coordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		D6B5362D2992FE5800A80044 = {
@@ -116,9 +129,10 @@
 				D6B536392992FE5800A80044 /* AppDelegate.swift */,
 				D6B5363B2992FE5800A80044 /* SceneDelegate.swift */,
 				D6B536772992FF3600A80044 /* API */,
-				D6B5367D2992FFDF00A80044 /* Models */,
-				D6B536762992FF3000A80044 /* Views */,
+				D645491229932205001A229B /* Coordinators */,
 				D6B536752992FF2800A80044 /* ViewControllers */,
+				D6B5367D2992FFDF00A80044 /* ViewModels */,
+				D6B536762992FF3000A80044 /* Views */,
 				D6B536422992FE6200A80044 /* Assets.xcassets */,
 				D6B536442992FE6200A80044 /* LaunchScreen.storyboard */,
 				D6B536472992FE6200A80044 /* Info.plist */,
@@ -162,19 +176,19 @@
 		D6B536772992FF3600A80044 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				D645490329932014001A229B /* APIModels */,
+				D645490329932014001A229B /* Models */,
 				D6B536782992FF5700A80044 /* APIService.swift */,
 				D64548FE29931FDE001A229B /* NYCSchoolAPIService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
 		};
-		D6B5367D2992FFDF00A80044 /* Models */ = {
+		D6B5367D2992FFDF00A80044 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				D64548F629930F1F001A229B /* NYCSchoolListViewModel.swift */,
 			);
-			path = Models;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,10 +323,12 @@
 				D6B5363E2992FE5800A80044 /* ViewController.swift in Sources */,
 				D64548FF29931FDE001A229B /* NYCSchoolAPIService.swift in Sources */,
 				D6B5363A2992FE5800A80044 /* AppDelegate.swift in Sources */,
+				D645491429932220001A229B /* NYCSchoolListCoordinator.swift in Sources */,
 				D645490529932025001A229B /* NYCSchool.swift in Sources */,
 				D64548F729930F1F001A229B /* NYCSchoolListViewModel.swift in Sources */,
 				D6B536792992FF5700A80044 /* APIService.swift in Sources */,
 				D6B5363C2992FE5800A80044 /* SceneDelegate.swift in Sources */,
+				D64549192993253A001A229B /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

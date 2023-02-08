@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NYCSchoolListViewController: UIViewController {
+class NYCSchoolListViewController: UITableViewController {
   
   let viewModel: NYCSchoolListViewModel
   
@@ -27,7 +27,5 @@ class NYCSchoolListViewController: UIViewController {
     view.backgroundColor = .systemTeal
     viewModel.fetchData()
   }
-
-
 }
 

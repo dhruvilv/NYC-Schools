@@ -19,8 +19,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let windowScene = (scene as? UIWindowScene) else { return }
     window = UIWindow(frame: windowScene.coordinateSpace.bounds)
     window?.windowScene = windowScene
-    window?.rootViewController = NYCSchoolListViewController(viewModel: NYCSchoolListViewModel(apiService: NYCSchoolAPIService()))
+    let navigationController = UINavigationController()
+    window?.rootViewController = navigationController
     window?.makeKeyAndVisible()
+    
+    // Initiate the coordinator for School List
+    let apiService = NYCSchoolAPIService()
+    let viewModel = NYCSchoolListViewModel(apiService: apiService)
+    let coordinator = NYCSchoolListCoordinator(
+      viewModel: viewModel,
+      navigationController: navigationController
+    )
+  
+    coordinator.start()
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {
