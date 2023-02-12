@@ -22,14 +22,9 @@ class NYCSchoolListViewModel {
   
   var schools: [NYCSchoolViewModel]?
   
-  var status: Status = .loading {
-    didSet {
-      statusDidChange?(status)
-    }
-  }
+  var status: Observable<Status> = Observable(value: .loading)
   
   var showSchoolDetailInfo: ((NYCSchoolViewModel) -> Void)?
-  var statusDidChange: ((Status) -> Void)?
   
   
   // MARK: - Initializer
@@ -53,11 +48,11 @@ class NYCSchoolListViewModel {
       switch result {
       case .success(let schoolList):
         self.schools = schoolList.compactMap(NYCSchoolViewModel.init)
-        self.status = .loaded
+        self.status.value = .loaded
       default:
         // TODO: We can have some error handling here by showing an Error screen or throwing an alert.
         // It really depends on the flow design.
-        self.status = .error
+        self.status.value = .error
         break
       }
     }

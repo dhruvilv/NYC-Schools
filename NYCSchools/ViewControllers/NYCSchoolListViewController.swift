@@ -27,7 +27,7 @@ class NYCSchoolListViewController: UITableViewController {
     
     // We can localize strings like this to support multiple languages.
     title = "NYC School List"
-    listViewModel.statusDidChange = { [weak self] status in
+    listViewModel.status.subscribe { [weak self] status in
       switch status {
       case .loaded:
         // Show data
@@ -47,6 +47,8 @@ class NYCSchoolListViewController: UITableViewController {
     tableView.separatorStyle = .none
     tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 80.0
+    tableView.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
+
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

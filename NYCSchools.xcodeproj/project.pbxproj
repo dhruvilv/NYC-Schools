@@ -16,6 +16,7 @@
 		D645492F2993385F001A229B /* UITableView+ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D645492E2993385F001A229B /* UITableView+ReusableView.swift */; };
 		D6454938299339B1001A229B /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6454937299339B1001A229B /* ReusableView.swift */; };
 		D645495829936FD8001A229B /* NYCSchoolDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D645495729936FD8001A229B /* NYCSchoolDetailViewController.swift */; };
+		D645497D29998086001A229B /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D645497C29998086001A229B /* Observable.swift */; };
 		D6B5363A2992FE5800A80044 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B536392992FE5800A80044 /* AppDelegate.swift */; };
 		D6B5363C2992FE5800A80044 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5363B2992FE5800A80044 /* SceneDelegate.swift */; };
 		D6B5363E2992FE5800A80044 /* NYCSchoolListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5363D2992FE5800A80044 /* NYCSchoolListViewController.swift */; };
@@ -53,6 +54,7 @@
 		D645492E2993385F001A229B /* UITableView+ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ReusableView.swift"; sourceTree = "<group>"; };
 		D6454937299339B1001A229B /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		D645495729936FD8001A229B /* NYCSchoolDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYCSchoolDetailViewController.swift; sourceTree = "<group>"; };
+		D645497C29998086001A229B /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D6B536362992FE5800A80044 /* NYCSchools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYCSchools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B536392992FE5800A80044 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6B5363B2992FE5800A80044 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 		D645492D2993383C001A229B /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				D645497C29998086001A229B /* Observable.swift */,
 				D6454937299339B1001A229B /* ReusableView.swift */,
 				D645492E2993385F001A229B /* UITableView+ReusableView.swift */,
 			);
@@ -342,6 +345,7 @@
 				D6B536792992FF5700A80044 /* APIService.swift in Sources */,
 				D6454924299331BE001A229B /* NYCSchoolViewModel.swift in Sources */,
 				D645492F2993385F001A229B /* UITableView+ReusableView.swift in Sources */,
+				D645497D29998086001A229B /* Observable.swift in Sources */,
 				D6B5363C2992FE5800A80044 /* SceneDelegate.swift in Sources */,
 				D645495829936FD8001A229B /* NYCSchoolDetailViewController.swift in Sources */,
 				D64549192993253A001A229B /* Coordinator.swift in Sources */,
