@@ -9,10 +9,10 @@ import UIKit
 
 class NYCSchoolDetailViewController: UIViewController {
   
-  let schoolName: String
+  let viewModel: NYCSchoolDetailViewModel
   
-  init(schoolName: String) {
-    self.schoolName = schoolName
+  init(viewModel: NYCSchoolDetailViewModel) {
+    self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -23,7 +23,7 @@ class NYCSchoolDetailViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = schoolName
+    title = "hello"
     view.backgroundColor = .systemGreen
   }
 }

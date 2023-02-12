@@ -19,10 +19,18 @@ class NYCSchoolListCoordinator: Coordinator {
   ) {
     self.viewModel = viewModel
     self.navigationController = navigationController
-    viewModel.showSchoolDetailInfo = { school in
-      let vc = NYCSchoolDetailViewController(schoolName: school.schoolName)
-      self.navigationController.pushViewController(vc, animated: true)
+    viewModel.showSchoolDetailInfo = { [weak self] school in
+      self?.startSchoolDetailCoordinator(school)
     }
+  }
+  
+  func startSchoolDetailCoordinator(_ school: NYCSchoolDetailViewModel) {
+    let viewModel = school
+    let coordinator = NYCSchoolDetailCoordinator(
+      viewModel: viewModel,
+      navigationController: navigationController
+    )
+    coordinator.start()
   }
   
   func start() {
