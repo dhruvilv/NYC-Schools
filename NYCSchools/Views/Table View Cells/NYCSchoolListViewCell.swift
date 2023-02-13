@@ -1,5 +1,5 @@
 //
-//  NYCSchoolTableViewCell.swift
+//  NYCSchoolListViewCell.swift
 //  NYCSchools
 //
 //  Created by Dhruvil Vyas on 2/7/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NYCSchoolTableViewCell: UITableViewCell {
+class NYCSchoolListViewCell: UITableViewCell {
   
   var viewModel: NYCSchoolInfo? {
     didSet {

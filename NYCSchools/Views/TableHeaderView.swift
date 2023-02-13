@@ -9,8 +9,21 @@ import UIKit
 
 class TableHeaderView: UIView {
   
-  private let label = UILabel()
-  private let line = UIView()
+  private let label: UILabel = {
+    let label = UILabel()
+    label.textColor = .systemBlue
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.font = UIFont.preferredFont(forTextStyle: .headline)
+    return label
+  }()
+  
+  private let line: UIView = {
+    let label = UILabel()
+    label.backgroundColor = .systemBlue
+    label.heightAnchor.constraint(equalToConstant: 1).isActive = true
+    label.translatesAutoresizingMaskIntoConstraints = false
+    return label
+  }()
   
   // MARK: - Initializer
 
@@ -27,26 +40,18 @@ class TableHeaderView: UIView {
   // MARK: - Methods
 
   private func setupViews() {
+    backgroundColor = .systemGray5
     addSubview(label)
     addSubview(line)
 
-    label.translatesAutoresizingMaskIntoConstraints = false
-    line.translatesAutoresizingMaskIntoConstraints = false
-
-    label.textColor = .systemBlue
-    label.font = UIFont.preferredFont(forTextStyle: .body)
-
-    line.backgroundColor = .systemBlue
-    line.heightAnchor.constraint(equalToConstant: 1).isActive = true
-
     NSLayoutConstraint.activate([
-      label.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+      label.topAnchor.constraint(equalTo: topAnchor, constant: 4),
       label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
       label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
 
-      line.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 8),
-      line.leadingAnchor.constraint(equalTo: leadingAnchor),
-      line.trailingAnchor.constraint(equalTo: trailingAnchor),
+      line.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 4),
+      line.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
+      line.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
       line.bottomAnchor.constraint(equalTo: bottomAnchor)
     ])
   }

@@ -1,5 +1,5 @@
 //
-//  NYCSchoolDetailAddressCell.swift
+//  NYCSchoolDetailAddressViewCell.swift
 //  NYCSchools
 //
 //  Created by Dhruvil Vyas on 2/12/23.
@@ -7,9 +7,15 @@
 
 import UIKit
 
-class AddressTableViewCell: UITableViewCell {
+class NYCSchoolDetailAddressViewCell: UITableViewCell {
     
-  private let addressLabel = UILabel()
+  private let addressLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.numberOfLines = 2
+    label.font = UIFont.preferredFont(forTextStyle: .callout).withSize(14)
+    return label
+  }()
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -23,9 +29,6 @@ class AddressTableViewCell: UITableViewCell {
 
   private func setupViews() {
     contentView.addSubview(addressLabel)
-    addressLabel.translatesAutoresizingMaskIntoConstraints = false
-    addressLabel.numberOfLines = 2
-    addressLabel.font = .systemFont(ofSize: 17)
 
     NSLayoutConstraint.activate([
         addressLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),

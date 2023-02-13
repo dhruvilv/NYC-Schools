@@ -10,10 +10,6 @@ import UIKit
 class NYCSchoolDetailViewController: UITableViewController, LoadingView {
   
   let viewModel: NYCSchoolDetailViewModel
-    
-  var formattedAddress: String {
-    return "\(viewModel.schoolInfo.addressLine1)\n\(viewModel.schoolInfo.city), \(viewModel.schoolInfo.stateCode) \(viewModel.schoolInfo.zip)"
-  }
   
   // MARK: - UI
   
@@ -42,11 +38,25 @@ class NYCSchoolDetailViewController: UITableViewController, LoadingView {
     // NOTE: For multiple language support, we could localize
     // the text throughout the app
     title = "School Details"
+    viewModel.status.subscribe { [weak self] status in
+      switch status {
+      case .loading:
+        // Do nothing
+        break
+      case .loaded:
+        self?.tableView.reloadData()
+        self?.stopAnimating()
+      case .error:
+        //TODO: Show Error
+      break
+      }
+    }
     setupViews()
     startAnimating()
   }
   
   func setupViews() {
+    setupTableView()
     view.addSubview(spinner)
     NSLayoutConstraint.activate([
       spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -54,7 +64,28 @@ class NYCSchoolDetailViewController: UITableViewController, LoadingView {
     ])
   }
   
+  func setupTableView() {
+    tableView.separatorStyle = .none
+    tableView.register(
+      NYCSchoolDetailAddressViewCell.self,
+      forCellReuseIdentifier: NYCSchoolDetailAddressViewCell.reuseIdentifier
+    )
+    tableView.register(
+      NYCSchoolDetailSingleLineCell.self,
+      forCellReuseIdentifier: NYCSchoolDetailSingleLineCell.reuseIdentifier
+    )
+    tableView.register(
+      NYCSchoolDetailSATScoresViewCell.self,
+      forCellReuseIdentifier: NYCSchoolDetailSATScoresViewCell.reuseIdentifier
+    )
+    tableView.register(
+      NYCSchoolDetailSchoolInfoCell.self,
+      forCellReuseIdentifier: NYCSchoolDetailSchoolInfoCell.reuseIdentifier
+    )
+  }
+  
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    if section == 0 { return nil }
     let headerView = TableHeaderView()
     headerView.configure(text: viewModel.sections[section])
     return headerView
@@ -69,6 +100,34 @@ class NYCSchoolDetailViewController: UITableViewController, LoadingView {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    switch indexPath.section {
+    case 0:
+      let cell = tableView.dequeue(for: indexPath) as NYCSchoolDetailSchoolInfoCell
+      cell.configure(name: viewModel.schoolName, id: viewModel.schoolInfo.databaseNumber)
+      return cell
+    case 1:
+      let cell = tableView.dequeue(for: indexPath) as NYCSchoolDetailAddressViewCell
+      cell.configure(address: viewModel.formattedAddress)
+      return cell
+    case 2:
+      let cell = tableView.dequeue(for: indexPath) as NYCSchoolDetailSingleLineCell
+      cell.configure(text: viewModel.phoneNumber)
+      return cell
+    case 3:
+      let cell = tableView.dequeue(for: indexPath) as NYCSchoolDetailSingleLineCell
+      cell.configure(text: viewModel.website)
+      return cell
+    case 4:
+      let cell = tableView.dequeue(for: indexPath) as NYCSchoolDetailSATScoresViewCell
+      cell.configure(
+        criticalReadingScore: viewModel.satScoreInfo?.avgCriticalReadingScore ?? "N/A",
+        mathScore: viewModel.satScoreInfo?.avgMathScore ?? "N/A",
+        writingScore: viewModel.satScoreInfo?.avgWritingScore ?? "N/A"
+      )
+      return cell
+    default:
+      break
+    }
     return UITableViewCell()
   }
 }

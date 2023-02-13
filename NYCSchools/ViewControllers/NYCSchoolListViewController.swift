@@ -62,8 +62,8 @@ class NYCSchoolListViewController: UITableViewController, LoadingView {
   
   func setupTableView() {
     tableView.register(
-      NYCSchoolTableViewCell.self,
-      forCellReuseIdentifier: NYCSchoolTableViewCell.reuseIdentifier
+      NYCSchoolListViewCell.self,
+      forCellReuseIdentifier: NYCSchoolListViewCell.reuseIdentifier
     )    
     tableView.separatorStyle = .none
     tableView.rowHeight = UITableView.automaticDimension
@@ -85,7 +85,7 @@ class NYCSchoolListViewController: UITableViewController, LoadingView {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeue(for: indexPath) as NYCSchoolTableViewCell
+    let cell = tableView.dequeue(for: indexPath) as NYCSchoolListViewCell
     cell.viewModel = listViewModel.schools?[indexPath.row]
     return cell
   }

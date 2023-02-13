@@ -13,7 +13,27 @@ class NYCSchoolDetailViewModel {
   let schoolInfo: NYCSchoolInfo
   var satScoreInfo: NYCSchoolSATScores?
   
-  var sections: [String] = ["Name", "Address", "Website", "Phone Number", "GPA Scores"]
+  private(set) var status: Observable<Status> = Observable(value: .loading)
+  
+  // MARK: - Computed Properties
+  
+  var sections: [String] = ["Name", "Address", "Phone", "Website", "SAT Scores"]
+  
+  var schoolName: String {
+    schoolInfo.name
+  }
+  
+  var phoneNumber: String {
+    schoolInfo.phoneNumber
+  }
+  
+  var website: String {
+    schoolInfo.website
+  }
+  
+  var formattedAddress: String {
+    "\(schoolInfo.addressLine1)\n\(schoolInfo.city), \(schoolInfo.stateCode) \(schoolInfo.zip)"
+  }
   
   // MARK: - Initializers
   
@@ -34,8 +54,10 @@ class NYCSchoolDetailViewModel {
           .compactMap(NYCSchoolSATScores.init)
           .filter { $0.databaseNumber == self?.schoolInfo.databaseNumber }
           .first
+        self?.status.value = .loaded
       case .failure(_):
         //TODO: Error case. Update UI with Error message.
+        self?.status.value = .error
         break
         
       }
