@@ -13,7 +13,7 @@ class NYCSchoolDetailSATScoresViewCell: UITableViewCell {
     let label = UILabel()
     label.textColor = .lightGray
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = UIFont.preferredFont(forTextStyle: .callout)
+    label.font = UIFont.preferredFont(forTextStyle: .callout).withSize(14)
     label.text = "Avg. Critical Reading Score: "
     return label
   }()
@@ -22,16 +22,26 @@ class NYCSchoolDetailSATScoresViewCell: UITableViewCell {
     let label = UILabel()
     label.textColor = .lightGray
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = UIFont.preferredFont(forTextStyle: .callout)
+    label.font = UIFont.preferredFont(forTextStyle: .callout).withSize(14)
     label.text = "Avg. Math Score: "
     return label
   }()
+  
   private let writingScoreLabel: UILabel = {
     let label = UILabel()
     label.textColor = .lightGray
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = UIFont.preferredFont(forTextStyle: .callout)
+    label.font = UIFont.preferredFont(forTextStyle: .callout).withSize(14)
     label.text = "Avg. Writing Score: "
+    return label
+  }()
+  
+  private let numberOfTestTakers: UILabel = {
+    let label = UILabel()
+    label.textColor = .lightGray
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.font = UIFont.preferredFont(forTextStyle: .callout).withSize(14)
+    label.text = "Number Of Test Takers: "
     return label
   }()
 
@@ -52,23 +62,41 @@ class NYCSchoolDetailSATScoresViewCell: UITableViewCell {
     contentView.addSubview(criticalReadingScoreLabel)
     contentView.addSubview(mathScoreLabel)
     contentView.addSubview(writingScoreLabel)
+    contentView.addSubview(numberOfTestTakers)
 
     NSLayoutConstraint.activate([
-      //databaseNumberLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-      //databaseNumberLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
       criticalReadingScoreLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
       criticalReadingScoreLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+      
       mathScoreLabel.topAnchor.constraint(equalTo: criticalReadingScoreLabel.bottomAnchor, constant: 8),
       mathScoreLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+      
       writingScoreLabel.topAnchor.constraint(equalTo: mathScoreLabel.bottomAnchor, constant: 8),
       writingScoreLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-      writingScoreLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+      
+      numberOfTestTakers.topAnchor.constraint(equalTo: writingScoreLabel.bottomAnchor, constant: 8),
+      numberOfTestTakers.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+      numberOfTestTakers.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
     ])
   }
   
-  func configure(criticalReadingScore: String, mathScore: String, writingScore: String) {
+  func configure(
+    criticalReadingScore: String,
+    mathScore: String,
+    writingScore: String,
+    testTakerCount: String
+  ) {
     criticalReadingScoreLabel.text = "Avg. Critical Reading Score: \(criticalReadingScore)"
     mathScoreLabel.text = "Avg. Math Score: \(mathScore)"
     writingScoreLabel.text = "Avg. Writing Score: \(writingScore)"
+    numberOfTestTakers.text = "Number Of Test Takers: \(testTakerCount)"
+  }
+  
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    criticalReadingScoreLabel.text = "Avg. Critical Reading Score:"
+    mathScoreLabel.text = "Avg. Math Score:"
+    writingScoreLabel.text = "Avg. Writing Score:"
+    numberOfTestTakers.text = "Number Of Test Takers: "
   }
 }

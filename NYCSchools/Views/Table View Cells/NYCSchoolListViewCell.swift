@@ -11,7 +11,6 @@ class NYCSchoolListViewCell: UITableViewCell {
   
   var viewModel: NYCSchoolInfo? {
     didSet {
-      databaseNumberLabel.text = viewModel?.databaseNumber
       schoolNameLabel.text = viewModel?.name
     }
   }
@@ -32,16 +31,6 @@ class NYCSchoolListViewCell: UITableViewCell {
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
  }()
-
- let databaseNumberLabel: UILabel = {
-    let label = UILabel()
-    label.font = UIFont.preferredFont(forTextStyle: .callout)
-    label.textAlignment = .right
-    label.translatesAutoresizingMaskIntoConstraints = false
-    label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-    label.setContentCompressionResistancePriority(.required, for: .horizontal)
-    return label
- }()
   
   @available(*, unavailable)
   required init?(coder: NSCoder) {
@@ -57,7 +46,6 @@ class NYCSchoolListViewCell: UITableViewCell {
 
     contentView.addSubview(containerView)
     containerView.addSubview(schoolNameLabel)
-    containerView.addSubview(databaseNumberLabel)
 
     setupConstraints()
   }
@@ -74,11 +62,8 @@ class NYCSchoolListViewCell: UITableViewCell {
       schoolNameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 4),
       schoolNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 4),
       schoolNameLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -4),
-      schoolNameLabel.trailingAnchor.constraint(equalTo: databaseNumberLabel.leadingAnchor, constant: -16),
-      
-      // Setup DatabaseNumberLabel
-      databaseNumberLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -4),
-      databaseNumberLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 4),
+      schoolNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            
     ])
   }
     
@@ -95,7 +80,6 @@ class NYCSchoolListViewCell: UITableViewCell {
   override func prepareForReuse() {
     super.prepareForReuse()
     viewModel = nil
-    schoolNameLabel.text = nil
-    databaseNumberLabel.text = nil
+    schoolNameLabel.text = ""    
   }
 }

@@ -41,4 +41,9 @@ class NYCSchoolDetailAddressViewCell: UITableViewCell {
   func configure(address: String) {
       addressLabel.text = address
   }
+  
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    addressLabel.text = ""
+  }
 }

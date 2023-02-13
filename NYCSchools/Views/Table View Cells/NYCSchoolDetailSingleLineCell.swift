@@ -11,6 +11,8 @@ class NYCSchoolDetailSingleLineCell: UITableViewCell {
     
   private let labelView: UILabel = {
     let label = UILabel()
+    label.numberOfLines = 0
+    label.lineBreakMode = .byWordWrapping
     label.translatesAutoresizingMaskIntoConstraints = false
     label.font = UIFont.preferredFont(forTextStyle: .callout).withSize(14)
     return label
@@ -38,5 +40,10 @@ class NYCSchoolDetailSingleLineCell: UITableViewCell {
 
   func configure(text: String) {
     labelView.text = text
+  }
+  
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    labelView.text = ""
   }
 }

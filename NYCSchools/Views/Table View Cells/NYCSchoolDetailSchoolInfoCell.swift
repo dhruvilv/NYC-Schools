@@ -14,7 +14,7 @@ class NYCSchoolDetailSchoolInfoCell: UITableViewCell {
     label.numberOfLines = 0
     label.lineBreakMode = .byWordWrapping
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = UIFont.preferredFont(forTextStyle: .headline)
+    label.font = UIFont.preferredFont(forTextStyle: .title3)
     return label
   }()
   
@@ -42,13 +42,13 @@ class NYCSchoolDetailSchoolInfoCell: UITableViewCell {
     contentView.addSubview(idLabel)
 
     NSLayoutConstraint.activate([
-      schoolNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+      schoolNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
       schoolNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
       schoolNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
       idLabel.topAnchor.constraint(equalTo: schoolNameLabel.bottomAnchor, constant: 4),
       idLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
       idLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-      idLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+      idLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24),
     ])
   }
 

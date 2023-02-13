@@ -85,7 +85,7 @@ class NYCSchoolDetailViewController: UITableViewController, LoadingView {
   }
   
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    if section == 0 { return nil }
+    if section == 0 { return UIView() }
     let headerView = TableHeaderView()
     headerView.configure(text: viewModel.sections[section])
     return headerView
@@ -122,7 +122,8 @@ class NYCSchoolDetailViewController: UITableViewController, LoadingView {
       cell.configure(
         criticalReadingScore: viewModel.satScoreInfo?.avgCriticalReadingScore ?? "N/A",
         mathScore: viewModel.satScoreInfo?.avgMathScore ?? "N/A",
-        writingScore: viewModel.satScoreInfo?.avgWritingScore ?? "N/A"
+        writingScore: viewModel.satScoreInfo?.avgWritingScore ?? "N/A",
+        testTakerCount: viewModel.satScoreInfo?.testTakerCount ?? "N/A"
       )
       return cell
     default:

@@ -13,6 +13,7 @@ struct NYCSchoolSATScores {
   let avgCriticalReadingScore: String
   let avgMathScore: String
   let avgWritingScore: String
+  let testTakerCount: String
 }
 
 extension NYCSchoolSATScores {
@@ -22,7 +23,8 @@ extension NYCSchoolSATScores {
       schoolName: response.schoolName,
       avgCriticalReadingScore: response.averageCriticalReadingScore,
       avgMathScore: response.averageMathScore,
-      avgWritingScore: response.averageWritingScore
+      avgWritingScore: response.averageWritingScore,
+      testTakerCount: response.testTakerCount
     )
   }
 }
