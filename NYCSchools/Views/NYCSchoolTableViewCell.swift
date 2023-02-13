@@ -9,10 +9,10 @@ import UIKit
 
 class NYCSchoolTableViewCell: UITableViewCell {
   
-  var viewModel: NYCSchoolDetailViewModel? {
+  var viewModel: NYCSchoolInfo? {
     didSet {
       databaseNumberLabel.text = viewModel?.databaseNumber
-      schoolNameLabel.text = viewModel?.schoolName
+      schoolNameLabel.text = viewModel?.name
     }
   }
   

@@ -10,14 +10,19 @@ import UIKit
 
 class NYCSchoolDetailCoordinator: Coordinator {
   
-  var navigationController: UINavigationController
+  let schoolInfo: NYCSchoolInfo
+  let apiService: NYCSchoolAPIService
   var viewModel: NYCSchoolDetailViewModel
+  var navigationController: UINavigationController
   
   init(
-    viewModel: NYCSchoolDetailViewModel,
+    schoolInfo: NYCSchoolInfo,
+    apiService: NYCSchoolAPIService,
     navigationController: UINavigationController
   ) {
-    self.viewModel = viewModel
+    self.schoolInfo = schoolInfo
+    self.apiService = apiService
+    self.viewModel = NYCSchoolDetailViewModel(schoolInfo: schoolInfo, apiService: apiService)
     self.navigationController = navigationController
   }
   

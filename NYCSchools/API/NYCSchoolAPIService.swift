@@ -19,8 +19,17 @@ struct NYCSchoolAPIService {
     self.session = session
   }
   
-  func fetchSchools(_ completion: @escaping (Result<[NYCSchool], APIError>) -> Void) {
+  func fetchSchools(_ completion: @escaping (Result<[NYCSchoolListAPIResponse], APIError>) -> Void) {
     let urlString = "\(baseURL)/\(NYCSchoolAPIService.SchoolListJSON)"
+    guard let url = URL(string: urlString) else { return }
+    let urlRequest = URLRequest(url: url)
+    performFetch(urlRequest) { result in
+      parseDecodable(result: result, completion: completion)
+    }
+  }
+  
+  func fetchSATScores(_ completion: @escaping (Result<[NYCSchoolSATScoresAPIResponse], APIError>) -> Void) {
+    let urlString = "\(baseURL)/\(NYCSchoolAPIService.SchoolDetailJSON)"
     guard let url = URL(string: urlString) else { return }
     let urlRequest = URLRequest(url: url)
     performFetch(urlRequest) { result in
@@ -85,13 +94,32 @@ extension NYCSchoolAPIService: APIService {
     }
   }
 
-  struct NYCSchool: Decodable {
+  struct NYCSchoolListAPIResponse: Decodable {
     let databaseNumber: String
     let schoolName: String
     
     private enum CodingKeys: String, CodingKey {
       case databaseNumber = "dbn"
       case schoolName = "school_name"
+    }
+  }
+  
+  struct NYCSchoolSATScoresAPIResponse: Decodable {
+    let databaseNumber: String
+    let schoolName: String
+    let testTakerCount: String
+    let averageCriticalReadingScore: String
+    let averageMathScore: String
+    let averageWritingScore: String
+    
+    private enum CodingKeys: String, CodingKey {
+      case databaseNumber = "dbn"
+      case schoolName = "school_name"
+      case testTakerCount = "num_of_sat_test_takers"
+      case averageCriticalReadingScore = "sat_critical_reading_avg_score"
+      case averageMathScore = "sat_math_avg_score"
+      case averageWritingScore = "sat_writing_avg_score"
+      
     }
   }
 }

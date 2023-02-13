@@ -22,9 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     // Initiate the coordinator for School List
     let apiService = NYCSchoolAPIService()
-    let viewModel = NYCSchoolListViewModel(apiService: apiService)
     let coordinator = NYCSchoolListCoordinator(
-      viewModel: viewModel,
+      apiService: apiService,
       navigationController: navigationController
     )
     initialCoordinator = coordinator

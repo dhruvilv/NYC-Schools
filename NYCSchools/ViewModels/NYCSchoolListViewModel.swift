@@ -20,11 +20,11 @@ class NYCSchoolListViewModel {
   
   let apiService: NYCSchoolAPIService
   
-  var schools: [NYCSchoolDetailViewModel]?
+  var schools: [NYCSchoolInfo]?
   
   var status: Observable<Status> = Observable(value: .loading)
   
-  var showSchoolDetailInfo: ((NYCSchoolDetailViewModel) -> Void)?
+  var showSchoolDetailInfo: ((NYCSchoolInfo) -> Void)?
   
   
   // MARK: - Initializer
@@ -47,7 +47,7 @@ class NYCSchoolListViewModel {
       guard let self = self else { return }
       switch result {
       case .success(let schoolList):
-        self.schools = schoolList.compactMap(NYCSchoolDetailViewModel.init)
+        self.schools = schoolList.compactMap(NYCSchoolInfo.init)
         self.status.value = .loaded
       default:
         // TODO: We can have some error handling here by showing an Error screen or throwing an alert.

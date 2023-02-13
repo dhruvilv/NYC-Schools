@@ -10,24 +10,26 @@ import UIKit
 
 class NYCSchoolListCoordinator: Coordinator {
   
+  let apiService: NYCSchoolAPIService
+  let viewModel: NYCSchoolListViewModel
   var navigationController: UINavigationController
-  var viewModel: NYCSchoolListViewModel
   
   init(
-    viewModel: NYCSchoolListViewModel,
+    apiService: NYCSchoolAPIService,
     navigationController: UINavigationController
   ) {
-    self.viewModel = viewModel
+    self.apiService = apiService
+    self.viewModel = NYCSchoolListViewModel(apiService: apiService)
     self.navigationController = navigationController
     viewModel.showSchoolDetailInfo = { [weak self] school in
       self?.startSchoolDetailCoordinator(school)
     }
   }
   
-  func startSchoolDetailCoordinator(_ school: NYCSchoolDetailViewModel) {
-    let viewModel = school
+  func startSchoolDetailCoordinator(_ school: NYCSchoolInfo) {
     let coordinator = NYCSchoolDetailCoordinator(
-      viewModel: viewModel,
+      schoolInfo: school,
+      apiService: apiService,
       navigationController: navigationController
     )
     coordinator.start()
