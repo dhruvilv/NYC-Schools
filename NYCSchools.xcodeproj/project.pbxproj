@@ -28,6 +28,7 @@
 		D66864E2299A2D4D00752870 /* NYCSchoolDetailSchoolInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66864E1299A2D4D00752870 /* NYCSchoolDetailSchoolInfoCell.swift */; };
 		D66864F0299A3B5200752870 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66864EF299A3B5200752870 /* Spacing.swift */; };
 		D6686500299A3EF600752870 /* NYCSchoolAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66864FF299A3EF600752870 /* NYCSchoolAPIServiceTests.swift */; };
+		D668650C299A437E00752870 /* NYCSchoolDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D668650B299A437E00752870 /* NYCSchoolDetailViewModelTests.swift */; };
 		D6B5363A2992FE5800A80044 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B536392992FE5800A80044 /* AppDelegate.swift */; };
 		D6B5363C2992FE5800A80044 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5363B2992FE5800A80044 /* SceneDelegate.swift */; };
 		D6B5363E2992FE5800A80044 /* NYCSchoolListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5363D2992FE5800A80044 /* NYCSchoolListViewController.swift */; };
@@ -77,6 +78,7 @@
 		D66864E1299A2D4D00752870 /* NYCSchoolDetailSchoolInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYCSchoolDetailSchoolInfoCell.swift; sourceTree = "<group>"; };
 		D66864EF299A3B5200752870 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		D66864FF299A3EF600752870 /* NYCSchoolAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYCSchoolAPIServiceTests.swift; sourceTree = "<group>"; };
+		D668650B299A437E00752870 /* NYCSchoolDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYCSchoolDetailViewModelTests.swift; sourceTree = "<group>"; };
 		D6B536362992FE5800A80044 /* NYCSchools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYCSchools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B536392992FE5800A80044 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6B5363B2992FE5800A80044 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +170,14 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		D668650A299A436800752870 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D668650B299A437E00752870 /* NYCSchoolDetailViewModelTests.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		D6B5362D2992FE5800A80044 = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +220,7 @@
 		D6B5364F2992FE6300A80044 /* NYCSchoolsTests */ = {
 			isa = PBXGroup;
 			children = (
+				D668650A299A436800752870 /* ViewModel */,
 				D66864FE299A3ED600752870 /* API */,
 				D6B536502992FE6300A80044 /* NYCSchoolsTests.swift */,
 				D6B536522992FE6300A80044 /* Info.plist */,
@@ -425,6 +436,7 @@
 			files = (
 				D6B536512992FE6300A80044 /* NYCSchoolsTests.swift in Sources */,
 				D6686500299A3EF600752870 /* NYCSchoolAPIServiceTests.swift in Sources */,
+				D668650C299A437E00752870 /* NYCSchoolDetailViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

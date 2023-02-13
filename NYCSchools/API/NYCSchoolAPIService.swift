@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NYCSchoolAPIService: APIService {
+class NYCSchoolAPIService: APIService {
   
   private static let SchoolListJSON = "s3k6-pzi2.json"
   private static let SchoolDetailJSON = "f9bf-2cp4.json"
@@ -23,8 +23,8 @@ struct NYCSchoolAPIService: APIService {
     let urlString = "\(baseURL)/\(NYCSchoolAPIService.SchoolListJSON)"
     guard let url = URL(string: urlString) else { return }
     let urlRequest = URLRequest(url: url)
-    performFetch(urlRequest) { result in
-      parseDecodable(result: result, completion: completion)
+    performFetch(urlRequest) { [weak self] result in
+        self?.parseDecodable(result: result, completion: completion)
     }
   }
   
@@ -32,8 +32,8 @@ struct NYCSchoolAPIService: APIService {
     let urlString = "\(baseURL)/\(NYCSchoolAPIService.SchoolDetailJSON)"
     guard let url = URL(string: urlString) else { return }
     let urlRequest = URLRequest(url: url)
-    performFetch(urlRequest) { result in
-      parseDecodable(result: result, completion: completion)
+    performFetch(urlRequest) { [weak self] result in
+        self?.parseDecodable(result: result, completion: completion)
     }
   }
   
