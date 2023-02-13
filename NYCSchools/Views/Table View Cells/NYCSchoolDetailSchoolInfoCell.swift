@@ -43,12 +43,12 @@ class NYCSchoolDetailSchoolInfoCell: UITableViewCell {
 
     NSLayoutConstraint.activate([
       schoolNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-      schoolNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-      schoolNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-      idLabel.topAnchor.constraint(equalTo: schoolNameLabel.bottomAnchor, constant: 4),
-      idLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-      idLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-      idLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24),
+      schoolNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Spacing.medium.rawValue),
+      schoolNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Spacing.medium.rawValue),
+      idLabel.topAnchor.constraint(equalTo: schoolNameLabel.bottomAnchor, constant: Spacing.small.rawValue),
+      idLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Spacing.medium.rawValue),
+      idLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Spacing.medium.rawValue),
+      idLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Spacing.large.rawValue),
     ])
   }
 

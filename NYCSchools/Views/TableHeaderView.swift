@@ -45,13 +45,13 @@ class TableHeaderView: UIView {
     addSubview(line)
 
     NSLayoutConstraint.activate([
-      label.topAnchor.constraint(equalTo: topAnchor, constant: 4),
-      label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-      label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+      label.topAnchor.constraint(equalTo: topAnchor, constant: Spacing.small.rawValue),
+      label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.medium.rawValue),
+      label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.medium.rawValue),
 
-      line.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 4),
-      line.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
-      line.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
+      line.topAnchor.constraint(equalTo: label.bottomAnchor, constant: Spacing.small.rawValue),
+      line.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.small.rawValue),
+      line.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.small.rawValue),
       line.bottomAnchor.constraint(equalTo: bottomAnchor)
     ])
   }

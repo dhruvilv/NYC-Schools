@@ -65,18 +65,18 @@ class NYCSchoolDetailSATScoresViewCell: UITableViewCell {
     contentView.addSubview(numberOfTestTakers)
 
     NSLayoutConstraint.activate([
-      criticalReadingScoreLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-      criticalReadingScoreLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+      criticalReadingScoreLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Spacing.medium.rawValue),
+      criticalReadingScoreLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Spacing.medium.rawValue),
       
-      mathScoreLabel.topAnchor.constraint(equalTo: criticalReadingScoreLabel.bottomAnchor, constant: 8),
-      mathScoreLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+      mathScoreLabel.topAnchor.constraint(equalTo: criticalReadingScoreLabel.bottomAnchor, constant: Spacing.small.rawValue),
+      mathScoreLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Spacing.medium.rawValue),
       
-      writingScoreLabel.topAnchor.constraint(equalTo: mathScoreLabel.bottomAnchor, constant: 8),
-      writingScoreLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+      writingScoreLabel.topAnchor.constraint(equalTo: mathScoreLabel.bottomAnchor, constant: Spacing.small.rawValue),
+      writingScoreLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Spacing.medium.rawValue),
       
-      numberOfTestTakers.topAnchor.constraint(equalTo: writingScoreLabel.bottomAnchor, constant: 8),
-      numberOfTestTakers.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-      numberOfTestTakers.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+      numberOfTestTakers.topAnchor.constraint(equalTo: writingScoreLabel.bottomAnchor, constant: Spacing.small.rawValue),
+      numberOfTestTakers.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Spacing.medium.rawValue),
+      numberOfTestTakers.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Spacing.medium.rawValue)
     ])
   }
   

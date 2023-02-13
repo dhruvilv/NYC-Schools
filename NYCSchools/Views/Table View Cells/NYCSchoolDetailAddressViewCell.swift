@@ -31,10 +31,10 @@ class NYCSchoolDetailAddressViewCell: UITableViewCell {
     contentView.addSubview(addressLabel)
 
     NSLayoutConstraint.activate([
-        addressLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-        addressLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-        addressLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-        addressLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+      addressLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Spacing.small.rawValue),
+      addressLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Spacing.medium.rawValue),
+      addressLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Spacing.medium.rawValue),
+      addressLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Spacing.small.rawValue)
     ])
   }
 

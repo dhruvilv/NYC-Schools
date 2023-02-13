@@ -33,8 +33,8 @@ class NYCSchoolDetailSingleLineCell: UITableViewCell {
 
     NSLayoutConstraint.activate([
       labelView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-      labelView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-      labelView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+      labelView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Spacing.medium.rawValue),
+      labelView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Spacing.medium.rawValue)
     ])
   }
 

@@ -26,6 +26,7 @@
 		D66864CE299A189E00752870 /* NYCSchoolDetailSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66864CD299A189E00752870 /* NYCSchoolDetailSingleLineCell.swift */; };
 		D66864DA299A26EA00752870 /* NYCSchoolDetailSATScoresViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66864D9299A26EA00752870 /* NYCSchoolDetailSATScoresViewCell.swift */; };
 		D66864E2299A2D4D00752870 /* NYCSchoolDetailSchoolInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66864E1299A2D4D00752870 /* NYCSchoolDetailSchoolInfoCell.swift */; };
+		D66864F0299A3B5200752870 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66864EF299A3B5200752870 /* Spacing.swift */; };
 		D6B5363A2992FE5800A80044 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B536392992FE5800A80044 /* AppDelegate.swift */; };
 		D6B5363C2992FE5800A80044 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5363B2992FE5800A80044 /* SceneDelegate.swift */; };
 		D6B5363E2992FE5800A80044 /* NYCSchoolListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5363D2992FE5800A80044 /* NYCSchoolListViewController.swift */; };
@@ -73,6 +74,7 @@
 		D66864CD299A189E00752870 /* NYCSchoolDetailSingleLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYCSchoolDetailSingleLineCell.swift; sourceTree = "<group>"; };
 		D66864D9299A26EA00752870 /* NYCSchoolDetailSATScoresViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYCSchoolDetailSATScoresViewCell.swift; sourceTree = "<group>"; };
 		D66864E1299A2D4D00752870 /* NYCSchoolDetailSchoolInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYCSchoolDetailSchoolInfoCell.swift; sourceTree = "<group>"; };
+		D66864EF299A3B5200752870 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		D6B536362992FE5800A80044 /* NYCSchools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYCSchools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B536392992FE5800A80044 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6B5363B2992FE5800A80044 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			children = (
 				D645497C29998086001A229B /* Observable.swift */,
 				D6454937299339B1001A229B /* ReusableView.swift */,
+				D66864EF299A3B5200752870 /* Spacing.swift */,
 				D645492E2993385F001A229B /* UITableView+ReusableView.swift */,
 			);
 			name = Utility;
@@ -391,6 +394,7 @@
 				D64549C42999D374001A229B /* NYCSchoolInfo.swift in Sources */,
 				D6454938299339B1001A229B /* ReusableView.swift in Sources */,
 				D64549A12999A16B001A229B /* NYCSchoolDetailCoordinator.swift in Sources */,
+				D66864F0299A3B5200752870 /* Spacing.swift in Sources */,
 				D66864C0299A129700752870 /* NYCSchoolDetailAddressViewCell.swift in Sources */,
 				D66864E2299A2D4D00752870 /* NYCSchoolDetailSchoolInfoCell.swift in Sources */,
 				D66864CE299A189E00752870 /* NYCSchoolDetailSingleLineCell.swift in Sources */,

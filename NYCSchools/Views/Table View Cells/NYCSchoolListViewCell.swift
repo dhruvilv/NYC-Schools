@@ -53,16 +53,16 @@ class NYCSchoolListViewCell: UITableViewCell {
   func setupConstraints() {
     NSLayoutConstraint.activate([
       // Setup Container View
-      containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
-      containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4),
-      containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-      containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
+      containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Spacing.small.rawValue),
+      containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Spacing.small.rawValue),
+      containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Spacing.small.rawValue),
+      containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Spacing.small.rawValue),
       
       // Setup schoolNameLabel
-      schoolNameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 4),
-      schoolNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 4),
-      schoolNameLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -4),
-      schoolNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+      schoolNameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Spacing.small.rawValue),
+      schoolNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Spacing.small.rawValue),
+      schoolNameLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -Spacing.small.rawValue),
+      schoolNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Spacing.medium.rawValue),
             
     ])
   }
