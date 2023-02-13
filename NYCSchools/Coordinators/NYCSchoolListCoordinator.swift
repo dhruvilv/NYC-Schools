@@ -21,8 +21,9 @@ class NYCSchoolListCoordinator: Coordinator {
     self.apiService = apiService
     self.viewModel = NYCSchoolListViewModel(apiService: apiService)
     self.navigationController = navigationController
-    viewModel.showSchoolDetailInfo = { [weak self] school in
-      self?.startSchoolDetailCoordinator(school)
+    viewModel.selectedSchool.subscribe { schoolInfo in
+      guard let schoolInfo = schoolInfo else { return }
+      self.startSchoolDetailCoordinator(schoolInfo)
     }
   }
   

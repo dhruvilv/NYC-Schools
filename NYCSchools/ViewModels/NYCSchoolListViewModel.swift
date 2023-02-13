@@ -22,10 +22,9 @@ class NYCSchoolListViewModel {
   
   var schools: [NYCSchoolInfo]?
   
-  var status: Observable<Status> = Observable(value: .loading)
-  
-  var showSchoolDetailInfo: ((NYCSchoolInfo) -> Void)?
-  
+  private(set) var status: Observable<Status> = Observable(value: .loading)
+    
+  private(set) var selectedSchool: Observable<NYCSchoolInfo?> = Observable(value: nil)
   
   // MARK: - Initializer
   
@@ -37,9 +36,7 @@ class NYCSchoolListViewModel {
   // MARK: - Methods
   
   func didTapSchool(at index: Int) {
-    guard let schools = schools, index < schools.count else { return }
-    let schoolViewModel = schools[index]
-    showSchoolDetailInfo?(schoolViewModel)
+    selectedSchool.value = schools?[index]
   }
   
   func fetchSchools() {
