@@ -40,10 +40,25 @@ struct NYCSchoolAPIService: APIService {
   struct NYCSchoolListAPIResponse: Decodable {
     let databaseNumber: String
     let schoolName: String
+    let phoneNumber: String
+    let website: String
+    let email: String
+    let addressLine1: String
+    let city: String
+    let zip: String
+    let stateCode: String
+    
     
     private enum CodingKeys: String, CodingKey {
       case databaseNumber = "dbn"
       case schoolName = "school_name"
+      case phoneNumber = "phone_number"
+      case website = "website"
+      case email = "school_email"
+      case addressLine1 = "primary_address_line_1"
+      case city = "city"
+      case zip = "zip"
+      case stateCode = "state_code"
     }
   }
   

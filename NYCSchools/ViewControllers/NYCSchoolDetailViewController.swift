@@ -35,7 +35,9 @@ class NYCSchoolDetailViewController: UIViewController, LoadingView {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = viewModel.schoolInfo.name
+    // NOTE: For multiple language support, we could localize
+    // the text throughout the app
+    title = "School Details"
     view.backgroundColor = .systemGreen
     setupViews()
     startAnimating()
