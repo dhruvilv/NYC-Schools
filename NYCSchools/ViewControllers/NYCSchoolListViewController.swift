@@ -7,14 +7,19 @@
 
 import UIKit
 
-class NYCSchoolListViewController: UITableViewController {
+class NYCSchoolListViewController: UITableViewController, LoadingView {
+  
+  // MARK: - Public
+  var spinner: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
   
   let listViewModel: NYCSchoolListViewModel
+  
+  // MARK: - Initializer
   
   init(viewModel: NYCSchoolListViewModel) {
     self.listViewModel = viewModel
     super.init(nibName: nil, bundle: nil)
-    setupTableView()
+    setupViews()
   }
   
   @available(*, unavailable)
@@ -31,12 +36,28 @@ class NYCSchoolListViewController: UITableViewController {
       switch status {
       case .loaded:
         // Show data
+        self?.stopAnimating()
         self?.tableView.reloadData()
       default:
         // Error Scenario
       break
       }
     }
+  }
+  
+  func setupViews() {
+    setupSpinner()
+    setupTableView()
+  }
+  
+  func setupSpinner() {
+    view.addSubview(spinner)
+    spinner.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+      spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+    ])
+    startAnimating()
   }
   
   func setupTableView() {
@@ -49,6 +70,16 @@ class NYCSchoolListViewController: UITableViewController {
     tableView.estimatedRowHeight = 80.0
     tableView.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
 
+  }
+  
+  // MARK: - Loading View
+  
+  func startAnimating() {
+    spinner.startAnimating()
+  }
+  
+  func stopAnimating() {
+    spinner.stopAnimating()
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
