@@ -72,16 +72,6 @@ class NYCSchoolListViewController: UITableViewController, LoadingView {
 
   }
   
-  // MARK: - Loading View
-  
-  func startAnimating() {
-    spinner.startAnimating()
-  }
-  
-  func stopAnimating() {
-    spinner.stopAnimating()
-  }
-  
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     listViewModel.didTapSchool(at: indexPath.row)
   }

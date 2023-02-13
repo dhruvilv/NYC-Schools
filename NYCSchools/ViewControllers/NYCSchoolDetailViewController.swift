@@ -7,9 +7,19 @@
 
 import UIKit
 
-class NYCSchoolDetailViewController: UIViewController {
+class NYCSchoolDetailViewController: UIViewController, LoadingView {
   
   let viewModel: NYCSchoolDetailViewModel
+  
+  // MARK: - UI Controls
+  
+  var spinner: UIActivityIndicatorView = {
+    let spinner = UIActivityIndicatorView(style: .large)
+    spinner.translatesAutoresizingMaskIntoConstraints = false
+    return spinner
+  }()
+  
+  // MARK: - Initialization
   
   init(viewModel: NYCSchoolDetailViewModel) {
     self.viewModel = viewModel
@@ -21,9 +31,35 @@ class NYCSchoolDetailViewController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
   
+  // MARK: - Life Cycle
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = "hello"
+    title = viewModel.schoolInfo.name
     view.backgroundColor = .systemGreen
+    setupViews()
+    startAnimating()
   }
+  
+  func setupViews() {
+    view.addSubview(spinner)
+    NSLayoutConstraint.activate([
+      spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+    ])
+  }
+}
+
+extension NYCSchoolDetailViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 1
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    UITableViewCell()
+  }
+}
+
+extension NYCSchoolDetailViewController: UITableViewDelegate {
+  
 }

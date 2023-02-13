@@ -12,3 +12,14 @@ protocol LoadingView {
   func startAnimating()
   func stopAnimating()
 }
+
+extension LoadingView where Self: UIViewController {
+    
+  func startAnimating() {
+    spinner.startAnimating()
+  }
+  
+  func stopAnimating() {
+    spinner.stopAnimating()
+  }
+}

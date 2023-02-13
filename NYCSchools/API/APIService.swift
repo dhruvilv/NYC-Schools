@@ -46,12 +46,10 @@ extension APIService {
       
       case 200:
         completion(.success(data))
-        print("success")
         
       case 400...499:
         let body = String(data: data, encoding: .utf8)
         completion(.failure(.requestError(http.statusCode, body ?? "<no body>")))
-        print("failure")
         
       case 500...599:
         completion(.failure(.serverError))
