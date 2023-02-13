@@ -7,11 +7,15 @@
 
 import UIKit
 
-class NYCSchoolDetailViewController: UIViewController, LoadingView {
+class NYCSchoolDetailViewController: UITableViewController, LoadingView {
   
   let viewModel: NYCSchoolDetailViewModel
+    
+  var formattedAddress: String {
+    return "\(viewModel.schoolInfo.addressLine1)\n\(viewModel.schoolInfo.city), \(viewModel.schoolInfo.stateCode) \(viewModel.schoolInfo.zip)"
+  }
   
-  // MARK: - UI Controls
+  // MARK: - UI
   
   var spinner: UIActivityIndicatorView = {
     let spinner = UIActivityIndicatorView(style: .large)
@@ -38,7 +42,6 @@ class NYCSchoolDetailViewController: UIViewController, LoadingView {
     // NOTE: For multiple language support, we could localize
     // the text throughout the app
     title = "School Details"
-    view.backgroundColor = .systemGreen
     setupViews()
     startAnimating()
   }
@@ -50,18 +53,22 @@ class NYCSchoolDetailViewController: UIViewController, LoadingView {
       spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
     ])
   }
-}
-
-extension NYCSchoolDetailViewController: UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  
+  override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let headerView = TableHeaderView()
+    headerView.configure(text: viewModel.sections[section])
+    return headerView
+  }
+  
+  override func numberOfSections(in tableView: UITableView) -> Int {
+    return viewModel.sections.count
+  }
+  
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 1
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    UITableViewCell()
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    return UITableViewCell()
   }
-}
-
-extension NYCSchoolDetailViewController: UITableViewDelegate {
-  
 }

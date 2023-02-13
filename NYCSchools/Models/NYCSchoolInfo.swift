@@ -12,7 +12,7 @@ struct NYCSchoolInfo {
   let databaseNumber: String
   let phoneNumber: String
   let website: String
-  let email: String
+  //let email: String
   let addressLine1: String
   let city: String
   let zip: String
@@ -27,7 +27,7 @@ extension NYCSchoolInfo {
       databaseNumber: response.databaseNumber,
       phoneNumber: response.phoneNumber,
       website: response.website,
-      email: response.email,
+      //email: response.email,
       addressLine1: response.addressLine1,
       city: response.city,
       zip: response.zip,

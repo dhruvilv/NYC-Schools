@@ -13,6 +13,8 @@ class NYCSchoolDetailViewModel {
   let schoolInfo: NYCSchoolInfo
   var satScoreInfo: NYCSchoolSATScores?
   
+  var sections: [String] = ["Name", "Address", "Website", "Phone Number", "GPA Scores"]
+  
   // MARK: - Initializers
   
   init(schoolInfo: NYCSchoolInfo, apiService: NYCSchoolAPIService) {
@@ -20,6 +22,7 @@ class NYCSchoolDetailViewModel {
     self.apiService = apiService
     
     
+    // MARK: - API
     /// NOTE: I don't like the fact that we cannot fetch the SAT score based off a school `databaseNumber`
     /// which would fetch us a single object since we already have the databaseNumber at hand. There might
     /// be such an API, but atleast I was not able to find it. Nevertheless, we fetch SAT scores for all
